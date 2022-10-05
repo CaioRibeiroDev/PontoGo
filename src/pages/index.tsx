@@ -1,9 +1,24 @@
+import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
-import { ServiceCard } from '../components/ServiceCard'
+import { Header } from '../components/Header'
 
 export default function Home() {
   return (
-    <ServiceCard title='Titulo' price='30' beneficio={[{title: 'teste', active: false}]} collaborators={10} />
+    <Header />
   )
 }
- 
+
+{/* <ServiceCard 
+      title='Titulo' 
+      price='30' 
+      benefits={
+        [
+          {title: 'Área de meus registros', active: true}, 
+          {title: 'Dashboard', active: true}, 
+          {title: `Acesso de 5 colaboradores`, active: true}, 
+          {title: 'Suporte exclusivo', active: false},
+          {title: 'Email corporativo', active: false}
+        ]
+      } 
+      collaborators={10} 
+    /> */}

@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react'
+import backgroundI from 'public/assets/background.svg'
 
 export const theme = extendTheme({
   colors: {
@@ -12,13 +13,13 @@ export const theme = extendTheme({
   fonts: {
     heading: 'Poppins',
     body: 'Poppins',
-  },
-  styles: {
-    global: {
-      body: {
-        bg: 'gray.900',
-        color: 'gray.50'
-      }
-    }
   }
+  // styles: {
+  //   global: {
+  //     body: {
+  //       bg: '#330693',
+  //       bgImage: "url('/assets/background.svg')"
+  //     }
+  //   }
+  // }
 })
