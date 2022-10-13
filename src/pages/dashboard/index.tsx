@@ -1,7 +1,24 @@
-import { Box, Flex, Text, Input as ChakraInput, FormControl, FormLabel, Button, Stack } from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, FormLabel, Input as ChakraInput, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { useState } from 'react';
+import { apiSite, changeToken } from "../../api/baseURL";
 
 export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  
+  async function handleLogin() {
+    const response = await apiSite.post('/login', {
+      email,
+      password
+    })
+
+    localStorage.setItem('token', response.data.token)
+    localStorage.setItem('username', response.data.user.name)
+
+    changeToken(response.data.token)
+  }
+
   return (
     <Flex align='center' flexWrap='wrap' justifyContent='center' gap='150'>
 
@@ -52,6 +69,7 @@ export default function Login() {
                 opacity={0.3}
                 placeholder='exemplo@email.com'
                 width={400}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
             <FormControl mb='3'>
@@ -67,15 +85,19 @@ export default function Login() {
                 opacity={0.3}
                 placeholder='*************'
                 width={400}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </FormControl>
             <Link href='/dashboard' passHref>
               <Text color="pontogo.primary" fontSize='15px' lineHeight='22px' fontWeight='400' cursor='pointer' textDecorationLine='underline'>Esqueci minha senha</Text>
             </Link>
           
-            <Link href='/dashboard'>
-              <Button as='a' bgColor='pontogo.primary' color='white' fontWeight={400} w='400px' h='50px' mt='6'>Entrar</Button>
-            </Link>
+            <Button 
+              as='a' bgColor='pontogo.primary' color='white' fontWeight={400} w='400px' h='50px' mt='6'
+              onClick={handleLogin}
+            >
+              Entrar
+            </Button>
           
           </Box>
 

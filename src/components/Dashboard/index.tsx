@@ -2,7 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 
 export function Dashboard() {
   return (
-    <Flex flexDir='column' boxShadow='2xl' width='200px' minH='100vh' height='100%'>
+    <Flex flexDir='column' boxShadow='2xl' width='200px' minH='100%' height='auto'>
       <Box
         bgImage="url('/assets/logo-purple.svg')"
         bgPosition="center"
